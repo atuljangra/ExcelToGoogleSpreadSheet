@@ -36,7 +36,7 @@ public class SpreadSheet {
         try {
             System.out.println("Uploading file " + file.getName());
             create = drive.files().create(fileMetaData, mediaContent)
-                    .setFields("id, parents, mimeType");
+                    .setFields("id, parents, mimeType, webViewLink");
             create.getMediaHttpUploader().setProgressListener(new FileUpdateProgressListener());
 
             // Using default chunk size of 10MB.
@@ -47,9 +47,8 @@ public class SpreadSheet {
             return false;
         }
         System.out.println("File ID: " + f.getId() + " Parent: " + f.getParents().toString()
-        + " MimeType: " + f.getMimeType());
+        + " MimeType: " + f.getMimeType() + " link: " + f.getWebViewLink());
         return true;
 
     }
-
 }
